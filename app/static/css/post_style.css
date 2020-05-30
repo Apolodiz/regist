@@ -1,0 +1,25 @@
+
+table {
+    border-radius: 20px 20px 20px 0;
+    border: 3px solid #0c3;
+    padding: 10px;
+    max-width: 668px;
+    background: #353b48;
+}
+
+table tr td img {
+    width: 45px;
+    height: 45px;
+}
+
+table tr td a {
+    margin: 13px 15px;
+    font-size: 24px;
+    color: #eee;
+}
+
+table tr td p {
+    margin: 15px 20px 5px;
+    font-size: 18px;
+    bottom: 0;
+}

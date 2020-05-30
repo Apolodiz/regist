@@ -1,33 +1,43 @@
-﻿
-    <div style="width: 100%; background-color: yellowgreen; text-align: center">
-
-        {% extends "layout.html" %}
-
+﻿<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        {% extends 'layout.html' %}
         {% block content %}
-
-        <h1">
-            Sign In</h1>
-            <form action="" method="post">
-                {{ form.hidden_tag() }}
-                <p>
-                    {{ form.username.label }}<br>
-                    {{ form.username(size=32) }}<br>
-                    {% for error in form.username.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
+        <form action="" method="post" class="cover">
+            {{ form.hidden_tag() }}
+            <div>
+                <h3>Login</h3>
+            </div>
+            <div>
+                <input type="text" name="username" placeholder="Username"><br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="Password"><br>
+                {% for error in form.password.errors %}
+                <span style="color: red">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div><input type="submit" name="submit" value="Sing In"></div>
+            <div>
+                <input type="checkbox" name="remember_me" id="rem">
+                <label for="rem">Remember Me</label>
+            </div>
+            <div>
+                <p class="reg">
+                    Don't have on account?
+                    <a class="reg-link" href="{{ url_for('register') }}"> Register Now!</a>
                 </p>
-                <p>
-                    {{ form.password.label }}<br>
-                    {{ form.password(size=32) }}<br>
-                    {% for error in form.password.errors %}
-                    <span style="color: red">[{{ error }}]</span>
-                    {% endfor %}
-                </p>
-                <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-                <p>{{ form.submit() }}</p>
-            </form>
-            <p>New User? <a href="{{ url_for('register') }}" style="text-decoration: none">Click to Register!</a></p>
-
-            {% endblock %}
-    </div>
-
+            </div>
+            <div><p><a href="#">Forgot Password</a></p></div>
+        </form>
+        <div>
+            <p class="signature">Design by Apolodiz</p>
+        </div>
+        {% endblock %}
+    </body>
+</html>

@@ -1,36 +1,20 @@
-﻿
-<html>
+﻿<html>
 <head>
-    {% if title %}
-    <title>{{ title }} - Microblog</title>
-    {% else %}
-    <title>Welcome to Microblog</title>
-    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="{{ url_for("static", filename="css/base.css") }}" rel="stylesheet">
+    <link href="{{ url_for("static", filename="css/real.css") }}" rel="stylesheet">
+    <link href="{{ url_for("static", filename="css/login_style.css") }}" rel="stylesheet">
+    <link href="{{ url_for("static", filename="css/index_style.css") }}" rel="stylesheet">
+    <link href="{{ url_for("static", filename="css/post_style.css") }}" rel="stylesheet">
+    <link href="{{ url_for("static", filename="css/user_style.css") }}" rel="stylesheet">
+    <link href="{{ url_for("static", filename="css/menu_style.css") }}" rel="stylesheet">
 </head>
 <body>
-    <div>
-        Microblog:
-        <a href="{{ url_for('index') }}">Home</a>
-        {% if current_user.is_anonymous %}
-        <a href="{{ url_for('login') }}">Login</a>
-        {% else %}
-        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
-        {% endif %}
-    </div>
-    
-    <hr>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
     {% endif %}
     {% endwith %}
-
     {% block content %}{% endblock %}
-    <div>Copyright 2020</div>
 </body>
 </html>

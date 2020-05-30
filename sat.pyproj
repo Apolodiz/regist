@@ -16,7 +16,8 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>sat</Name>
     <RootNamespace>sat</RootNamespace>
-    <InterpreterId>MSBuild|env3|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env4|$(MSBuildProjectFullPath)</InterpreterId>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +37,9 @@
     <Compile Include="app\routes.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\tests.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -45,27 +49,40 @@
     <Compile Include="project_sat.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\css\base.css" />
+    <Content Include="app\static\css\real.css" />
+    <Content Include="app\static\css\index_style.css" />
+    <Content Include="app\static\css\menu_style.css" />
+    <Content Include="app\static\css\login_style.css" />
+    <Content Include="app\static\css\post_style.css" />
+    <Content Include="app\static\css\user_style.css" />
     <Content Include="app\Templates\index.html" />
     <Content Include="app\Templates\layout.html" />
     <Content Include="app\Templates\login.html" />
     <Content Include="app\Templates\register.html" />
     <Content Include="app\Templates\user.html" />
+    <Content Include="app\Templates\edit_profile.html" />
+    <Content Include="app\Templates\_post.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env3\">
-      <Id>env3</Id>
+    <Interpreter Include="env4\">
+      <Id>env4</Id>
       <Version>3.7</Version>
-      <Description>env3 (Python 3.7 (32-bit))</Description>
+      <Description>env4 (Python 3.7 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X86</Architecture>
+      <Architecture>X64</Architecture>
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\static\" />
+    <Folder Include="app\static\img\" />
+    <Folder Include="app\static\svg\" />
     <Folder Include="app\Templates\" />
+    <Folder Include="app\static\css\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

@@ -1,19 +1,49 @@
-﻿{% extends "base.html" %}
-
-{% block content %}
-<table>
-    <tr valign="top">
-        <td><img src="{{ user.avatar(128) }}"></td>
-        <td><h1>User: {{ user.username }}</h1></td>
-    </tr>
-</table>
-<hr>
-    {% for post in posts %}
-<table>
-    <tr valign="top">
-        <td><img src="{{ post.author.avatar(36) }}"></td>
-        <td>{{ post.author.username }} says:<br>{{ post.body }}</td>
-    </tr>
-</table>
-    {% endfor %}
-{% endblock %}
+﻿<html>
+    <head>
+        <title>{{ current_user.username }}</title>
+    </head>
+    <body>
+        {% extends 'layout.html' %}
+        {% block content %}
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <img src="{{ url_for("static", filename="svg/menu.svg") }}">
+            </label>
+            <div class="logo">
+                <p><span>GREEN</span>ZONE</p>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('explore') }}">Explore</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="about">
+            <div>
+                <h3>
+                    Hi, <br>
+                    I'm <span>{{ user.username }}</span>,
+                    {% if user.about_me %}<br>
+                    {{ user.about_me }}
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="user_data">
+                {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+                <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+                <!--<img src="{{ user.avatar(128) }}">-->
+                {% if user == current_user %}<a href="{{ url_for('edit_profile') }}">Edit Profile</a>
+                {% elif not current_user.is_following(user) %}
+                <a href="{{ url_for('follow', username=user.username) }}">Follow</a>
+                {% else %}
+                <a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a>
+                {% endif %}
+            </div>
+        </div>
+        {% for post in posts %}
+        {% endfor %}
+        {% endblock %}
+    </body>
+</html>

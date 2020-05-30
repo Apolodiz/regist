@@ -1,7 +1,52 @@
-﻿{% extends "layout.html" %}
+﻿<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        {% extends 'layout.html' %}
+        {% block content %}
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <img src="{{ url_for("static", filename="svg/menu.svg") }}">
+            </label>
+            <div class="logo">
+                <p><span>GREEN</span>ZONE</p>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('explore') }}">Explore</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        {% if form %}
+        <form action="" method="post" class="wrap">
+            {{ form.hidden_tag() }}
+            <div class="form_field">
+                <textarea name="post" placeholder="Message"></textarea>
+                <button name="submit">
+                    <img src="{{ url_for("static", filename="svg/submit.svg") }}">
+                </button>
+            </div>
+            {% for error in form.post.errors %}
+            <span>[{{ error }}]</span>
+            {% endfor %}
+        </form>
+        {% endif %}
+        <div class="post_field">
+            {% for post in posts %}
+            {% include '_post.html' %}
+            {% endfor %}
 
+            {% if prev_url %}
+            <a href="{{ prev_url }}">Newer posts</a>
+            {% endif %}
 
-{% block content %}
-<h1>Hi, {{ current_user.username }}!</h1>
-
-{% endblock %}
+            {% if next_url %}
+            <a href="{{ next_url }}">Older posts</a>
+            {% endif %}
+        </div>
+        {% endblock %}
+    </body>
+</html>

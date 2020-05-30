@@ -1,0 +1,56 @@
+
+.wrap {
+    background: #353b48;
+    position: fixed;
+    padding: 10px;
+    height: 70px;
+    width: 100%;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+}
+
+.form_field {
+    position: relative;
+    width: 100%;
+}
+
+.post_field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 70px 25px 95px;
+    max-width: 768px;
+}
+
+.form_field textarea {
+    padding: 7px 60px 7px 15px;
+    overflow: hidden;
+    background: none;
+    font-size: 30px;
+    transition: .3s;
+    height: 50px;
+    resize: none;
+    float: left;
+    width: 100%;
+    color: #ccc;
+}
+
+.form_field textarea:focus {
+    padding: 7px 60px 7px 7px;
+    transition: .3s;
+}
+
+.form_field button img {
+    position: absolute;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    right: 0;
+}
+
+@media screen and (min-width:768px) {
+    .wrap {
+        padding: 10px 19%;
+    }
+}

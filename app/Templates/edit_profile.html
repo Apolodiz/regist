@@ -1,0 +1,36 @@
+﻿<html>
+    <head>
+        <title>Edit profile</title>
+    </head>
+    <body>
+        <section>
+            {% extends 'layout.html' %}
+            {% block content %}
+            <div class="back_arrow">
+                <a href="{{ url_for('user', username=current_user.username) }}">
+                    <img src="{{ url_for("static", filename="svg/back.svg") }}">
+                </a>
+            </div>
+            <form action="" method="post" class="cover">
+                {{ form.hidden_tag() }}
+                <h3>Edit Profile</h3>
+                <div>
+                    <input type="text" name="username" placeholder="New Username"><br>
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    <textarea name="about_me" placeholder="Status"></textarea><br>
+                    {% for error in form.about_me.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    <input type="submit" name="submit" value="To Apply">
+                </div>
+            </form>
+            {% endblock %}
+        </section>
+    </body>
+</html>

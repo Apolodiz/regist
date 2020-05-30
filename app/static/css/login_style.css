@@ -1,0 +1,58 @@
+
+#rem {
+    display: none;
+}
+
+#rem + label {
+    display: block;
+    margin: 25px 0 0;
+}
+
+label:before {
+    margin-right: 10px;
+}
+
+#rem + label:before {
+    content: "\2714";
+    color: transparent;
+    border: 3px solid #0c3;
+    display: inline-block;
+    vertical-align: bottom;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    transition: .3s;
+}
+
+#rem + label:active:before {
+    transform: scale(0);
+}
+
+#rem:checked + label:before {
+    background: #0c3;
+    color: #fff;
+    
+}
+
+.reg {
+    margin-top: 25px;
+}
+
+.reg-link {
+    color: #0c3
+}
+
+.rem {
+    color: #ccc;
+    margin-top: 18px;
+    font-size: 18px;
+}
+
+.signature {
+    position: fixed;
+    color: #aaa;
+    bottom: 8px;
+    right: 12px;
+    z-index: 1;
+}

@@ -1,0 +1,45 @@
+
+.about h3 span {
+    color: #0c3;
+}
+
+.about {
+    transform: translate(0,-50%);
+    position: absolute;
+    max-width: 350px;
+    text-align: left;
+    margin: 0 50px;
+    top: 50%;
+    left: 0;
+}
+
+.user_data {
+    margin-top: 25px;
+}
+
+.user_data p {
+    font-size: 18px;
+}
+
+.user_data a {
+    border: 3px solid #0c3;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 21px;
+    display: block;
+    height: 45px;
+    width: 100%;
+    color: #0c3;
+    transition: .3s;
+}
+
+.user_data a:hover {
+    background: #0c3;
+    color: #ccc;
+    transition: .3s;
+}
+
+.user_data a:active {
+    transform: scale(.93);
+}
