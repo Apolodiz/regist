@@ -9,4 +9,4 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     POSTS_PER_PAGE = 25
-    TEMPLATES_DIR= os.path.join(project_dir, 'Templates')config.py
+    TEMPLATES_DIR= os.path.join(project_dir, 'Templates')
